@@ -2,21 +2,26 @@
 
 public class CameraController : MonoBehaviour
 {
-    private bool canMove = true;
+    public bool isInvertScroll;
 
     private Camera cam;
 
     public float panSpeed = 30f, panBorderThickness = 10f, scrollSpeed = 5f;
-    public float minY = 20f, maxY = 80f;
+    public float scrollMin = 20f, scrollMax = 80f;
+
+    void Start()
+    {
+        cam = gameObject.GetComponent<Camera>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            canMove = !canMove;
-
-        if (!canMove)
+        if (GameManager.GameIsOver)
+        {
+            this.enabled = false;
             return;
+        }
 
         if (Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness)
         {
@@ -38,13 +43,19 @@ public class CameraController : MonoBehaviour
             transform.Translate(Vector3.right * panSpeed * Time.deltaTime, Space.World);
         }
 
+        Vector3 clampedPosition = transform.position;
+        clampedPosition.x = Mathf.Clamp(transform.position.x, -15f, 50f);
+        clampedPosition.z = Mathf.Clamp(transform.position.z, 5f, 30f);
+
+        transform.position = clampedPosition;
+
         float scroll = Input.GetAxis("Mouse ScrollWheel");
+        float finalScroll = scroll * scrollSpeed * -1000 * Time.deltaTime;
+        if (isInvertScroll)
+            finalScroll *= -1f;
 
-        Vector3 pos = transform.position;
+        cam.orthographicSize += finalScroll;
+        cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, scrollMin, scrollMax);
 
-        pos.y -= scroll * 1000 * scrollSpeed * Time.deltaTime;
-        pos.y = Mathf.Clamp(pos.y, minY, maxY);
-
-        transform.position = pos;
     }
 }

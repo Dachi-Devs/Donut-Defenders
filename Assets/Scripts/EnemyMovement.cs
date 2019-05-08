@@ -10,6 +10,8 @@ public class EnemyMovement : MonoBehaviour
 
     private Enemy enemy;
 
+    public float rotSpeed = 10f;
+
     void Start()
     {
         enemy = GetComponent<Enemy>();
@@ -20,6 +22,8 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * enemy.moveSpeed * Time.deltaTime, Space.World);
+        RotateToPath();
+
 
         if (Vector3.Distance(transform.position, target.position) <= 0.2f)
         {
@@ -45,5 +49,13 @@ public class EnemyMovement : MonoBehaviour
     {
         PlayerStats.Lives--;
         Destroy(gameObject);
+    }
+
+    void RotateToPath()
+    {
+        Vector3 dir = target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, rotSpeed * Time.deltaTime).eulerAngles;
+        transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 }
