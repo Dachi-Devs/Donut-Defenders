@@ -4,34 +4,34 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -5159058012364499084
-    second: DonutSprite
+    second: Sprite1
   - first:
       213: 938505745601996327
-    second: FruitBowlSprite
+    second: Sprite2
   - first:
       213: -3459558614108198297
-    second: RingTosserSprite
+    second: Sprite3
   - first:
       213: 659797372610145418
-    second: SodaSprayerSprite
+    second: DonutSprite
   - first:
       213: 796683922908063069
-    second: RingTosserSprite
+    second: Sprite3
   - first:
       213: -1722662602433800271
-    second: SodaSprayerSprite
+    second: DonutSprite
   - first:
       213: 1026407549584056185
-    second: RingTosserUpgradeSprite
+    second: Sprite5
   - first:
       213: -3086720242725003937
-    second: SpriteSheet_7
+    second: FruitBowlSprite
   - first:
       213: -4556197565260342421
     second: BulletSprite
   - first:
       213: -2764029711273647405
-    second: SpriteSheet_9
+    second: RingTossOverSprite
   - first:
       213: -5540648042656198855
     second: WatermelonSprite
@@ -40,13 +40,22 @@ TextureImporter:
     second: SpriteSheet_11
   - first:
       213: 8132427177819274215
-    second: RingTossSprite
+    second: Sprite6
   - first:
       213: -1169905229279296419
-    second: SpriteSheet_5
+    second: Sprite4
   - first:
       213: 8058879627694289943
     second: SpriteSheet_12
+  - first:
+      213: 6060148225682720777
+    second: TomatoSprite
+  - first:
+      213: 8132427177819274215
+    second: RingTossSprite
+  - first:
+      213: -1722662602433800271
+    second: SodaSprayerSprite
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -90,7 +99,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -140,7 +149,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DonutSprite
+      name: Sprite1
       rect:
         serializedVersion: 2
         x: 0
@@ -161,7 +170,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FruitBowlSprite
+      name: Sprite2
       rect:
         serializedVersion: 2
         x: 128
@@ -182,7 +191,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RingTosserSprite
+      name: Sprite3
       rect:
         serializedVersion: 2
         x: 256
@@ -203,7 +212,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SodaSprayerSprite
+      name: DonutSprite
       rect:
         serializedVersion: 2
         x: 384
@@ -224,13 +233,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RingTossSprite
+      name: Sprite6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 256
-        width: 128
-        height: 128
+        x: 128
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -245,10 +254,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_5
+      name: Sprite4
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 256
         width: 128
         height: 128
@@ -266,7 +275,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RingTosserUpgradeSprite
+      name: Sprite5
       rect:
         serializedVersion: 2
         x: 256
@@ -287,7 +296,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_7
+      name: FruitBowlSprite
       rect:
         serializedVersion: 2
         x: 384
@@ -312,7 +321,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 140
-        y: 140
+        y: 268
         width: 104
         height: 104
       alignment: 0
@@ -329,7 +338,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpriteSheet_9
+      name: RingTossOverSprite
       rect:
         serializedVersion: 2
         x: 256
@@ -353,10 +362,10 @@ TextureImporter:
       name: WatermelonSprite
       rect:
         serializedVersion: 2
-        x: 388
-        y: 28
-        width: 120
-        height: 72
+        x: 0
+        y: 0
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -387,6 +396,69 @@ TextureImporter:
       bones: []
       spriteID: cbf8ad7b6d0812048bc9252e05134e13
       internalID: 3929453942698372637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TomatoSprite
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28c8c601547a5314db8b581fc1810d0b
+      internalID: 6060148225682720777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RingTossSprite
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 323ae5b478c1c4141ae5478e60a9627d
+      internalID: 8132427177819274215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SodaSprayerSprite
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc423fcf6231bdc44b1ab32c4349ec68
+      internalID: -1722662602433800271
       vertices: []
       indices: 
       edges: []

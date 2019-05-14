@@ -39,6 +39,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Scenery
+    uniqueID: 3399989329
+    locked: 0
+  - name: Node
+    uniqueID: 3962528509
+    locked: 0
+  - name: Turrets
+    uniqueID: 542250501
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
