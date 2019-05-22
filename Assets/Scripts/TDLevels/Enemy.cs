@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        PlayerStats.Money += bounty;
+        PlayerStats.energy += bounty;
 
         GameObject effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, 3f);

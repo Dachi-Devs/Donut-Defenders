@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class TurretUI : MonoBehaviour
 {
-    public GameObject UI;
+    public GameObject canvas;
 
     public Text overchargeCost;
     public Button overchargeButton;
@@ -13,7 +13,6 @@ public class TurretUI : MonoBehaviour
     public void SetTarget(Node _target)
     {
         target = _target;
-
         if (!target.isUpgraded)
         {
             overchargeCost.text = "£" + target.turretBlueprint.overchargeCost;
@@ -25,12 +24,12 @@ public class TurretUI : MonoBehaviour
             overchargeButton.interactable = false;
         }
 
-        UI.SetActive(true);
+        canvas.SetActive(true);
     }
 
     public void Hide()
     {
-        UI.SetActive(false);
+        canvas.SetActive(false);
     }
 
     public void Overcharge()

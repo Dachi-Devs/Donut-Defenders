@@ -5,32 +5,26 @@ public class TurretController : MonoBehaviour
 
     private Transform target;
     private Enemy targetEnemy;
-
+    private TurretBlueprint turretBP;
 
     [Header("General")]
 
-    public float range = 15f;
+    public float range;
 
-    [Header("Use Bullets (default)")]
-    public float fireRate = 1f;
-    private float fireCountdown = 0f;
+    [Header("Turret Settings")]
+    public float fireRate;
+    private float fireCountdown;
     public GameObject bulletPrefab;
 
-    [Header("Use Laser")]
-    public bool useLaser = false;
-
-    public int damageOverTime = 30;
-    public float slowPct = 0.5f;
-
-    public LineRenderer lineRenderer;
-    public ParticleSystem impactEffect;
-    public Light impactLight;
+    public int damageOverTime;
+    public float slowPct;
 
     [Header("Editor Setup")]
     public float rotSpeed = 10f;
     public string enemyTag = "Enemy";
 
     public Transform firePoint;
+    public SpriteRenderer sprite;
 
     // Start is called before the first frame update
     void Start()
@@ -72,27 +66,12 @@ public class TurretController : MonoBehaviour
 
         if (target == null)
         {
-            if (useLaser)
-            {
-                if (lineRenderer.enabled)
-                {
-                    lineRenderer.enabled = false;
-                    impactEffect.Stop();
-                    impactLight.enabled = false;
-                }
-            }
             return;
-        }
-
-        LockOnTarget();
-
-        if (useLaser)
-        {
-            Laser();
         }
 
         else
         {
+            LockOnTarget();
             if (fireCountdown <= 0f)
             {
                 Shoot();
@@ -109,29 +88,6 @@ public class TurretController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, rotation.z);
     }
 
-    void Laser()
-    {
-        targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
-        targetEnemy.Slow(slowPct);
-
-        if (!lineRenderer.enabled)
-        {
-            lineRenderer.enabled = true;
-            impactEffect.Play();
-            impactLight.enabled = true;
-        }
-
-        lineRenderer.SetPosition(0, firePoint.position);
-        lineRenderer.SetPosition(1, target.position);
-
-        Vector3 dir = firePoint.position - target.position;
-
-        impactEffect.transform.position = target.position + dir.normalized;
-
-        impactEffect.transform.rotation = Quaternion.LookRotation(dir);
-
-    }
-
     void Shoot()
     {
         GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -146,5 +102,16 @@ public class TurretController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    public void Setup(TurretBlueprint turr)
+    {
+        turretBP = turr;
+        sprite.sprite = turretBP.spr;
+    }
+
+    public void Overcharge()
+    {
+        sprite.sprite = turretBP.ocSpr;
     }
 }

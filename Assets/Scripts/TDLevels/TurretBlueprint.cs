@@ -1,12 +1,17 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-[System.Serializable]
-public class TurretBlueprint
+[CreateAssetMenu(fileName = "Turret", menuName = "Items/Turret")]
+public class TurretBlueprint : ScriptableObject
 {
-    public GameObject prefab;
-    public int cost;
+    public Sprite spr;
+    public string type;
 
-    public GameObject overchargePrefab;
+    public float range;
+    public float fireRate;
+    public int damageOverTime;
+    public float slowPct;
+    public GameObject bulletPrefab;
+
+    public Sprite ocSpr;
     public int overchargeCost;
 }

@@ -4,6 +4,7 @@ public class OverworldPlayer : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public LevelMarker startMarker;
+    public bool canMove;
 
     public bool IsMoving { get; private set; }
 
@@ -11,6 +12,7 @@ public class OverworldPlayer : MonoBehaviour
     private LevelMarker targetMarker;
 
     public ScreenFade fade;
+    public UIOverworld ui;
 
     void Start()
     {
@@ -55,16 +57,16 @@ public class OverworldPlayer : MonoBehaviour
         {
             TryLoadLevel();
         }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            UnlockNextLevel();
-        }
     }
 
     private void TryLoadLevel()
     {
-        fade.FadeTo(CurrentMarker.level.levelToLoad);
+        string lvl = CurrentMarker.level.levelToLoad.name;
+        if (lvl != null)
+        {
+            Debug.Log("Load Scene " + lvl);
+            fade.FadeTo(lvl);
+        }
     }
 
     public void TrySetDirection(Direction direction)
@@ -74,7 +76,7 @@ public class OverworldPlayer : MonoBehaviour
         if (marker == null)
             return;
 
-        if(marker.pathLock.isLocked == false)
+        if(canMove)
         {
             MoveToMarker(marker);
         }
@@ -110,30 +112,16 @@ public class OverworldPlayer : MonoBehaviour
 
     public void SetCurrentMarker(LevelMarker marker)
     {
+        canMove = false;
         CurrentMarker = marker;
         targetMarker = null;
         transform.position = marker.transform.position;
         IsMoving = false;
+        ui.SetLevelName(CurrentMarker.level.levelTitle.ToString());
     }
 
     public void OnLevelExit()
     {
-        UnlockNextLevel();
-    }
-
-    void UnlockNextLevel()
-    {
-        if(CurrentMarker.UpMarker != null)
-        {
-            CurrentMarker.UpMarker.pathLock.UnlockPath();
-        }
-        if (CurrentMarker.DownMarker != null)
-        {
-            CurrentMarker.DownMarker.pathLock.UnlockPath();
-        }
-        if (CurrentMarker.RightMarker != null)
-        {
-            CurrentMarker.RightMarker.pathLock.UnlockPath();
-        }
+        canMove = true;
     }
 }

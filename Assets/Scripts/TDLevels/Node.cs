@@ -4,12 +4,13 @@ using UnityEngine.EventSystems;
 public class Node : MonoBehaviour
 {
     public Color hoverColor, cantBuyColor;
-    public Vector3 positionOffset;
 
     [HideInInspector]
-    public GameObject turret;
+    public GameObject turretObject;
     [HideInInspector]
     public TurretBlueprint turretBlueprint;
+    [HideInInspector]
+    public TurretController turret;
     [HideInInspector]
     public bool isUpgraded = false;
 
@@ -29,7 +30,7 @@ public class Node : MonoBehaviour
 
     public Vector3 GetBuildPosition()
     {
-        return transform.position + positionOffset;
+        return transform.position;
     }
 
     void OnMouseDown()
@@ -43,56 +44,37 @@ public class Node : MonoBehaviour
             return;
         }
 
-       if (!buildManager.CanBuild)
-            return;
-
-        BuildTurret(buildManager.GetTurretToBuild());
+        buildManager.BuildTurret(this);
     }
 
-    void BuildTurret(TurretBlueprint bp)
+    private void CannotBuild()
     {
+        Debug.Log("Can't Build");
+    }
 
-        if (PlayerStats.Money < bp.cost)
-        {
-            Debug.Log("Not enough money");
-            return;
-        }
-
-        PlayerStats.Money -= bp.cost;
-
-        GameObject _turret = Instantiate(bp.prefab, GetBuildPosition(), Quaternion.identity);
-        turret = _turret;
-        turretBlueprint = bp;
-
-        GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
-        Destroy(effect, 5f);
+    public void SetNodeTurret(TurretBlueprint turretBP, TurretController turretCont)
+    {
+        turretBlueprint = turretBP;
+        turret = turretCont;
     }
 
     public void OverchargeTurret()
     {
-        if (PlayerStats.Money < turretBlueprint.overchargeCost)
+        if (PlayerStats.energy < turretBlueprint.overchargeCost)
         {
             return;
         }
 
-        PlayerStats.Money -= turretBlueprint.overchargeCost;
+        PlayerStats.energy -= turretBlueprint.overchargeCost;
 
-        //Clear old turret
-        Destroy(turret);
-
-        //Build new turret
-        GameObject _turret = Instantiate(turretBlueprint.overchargePrefab, GetBuildPosition(), Quaternion.identity);
-        turret = _turret;
-
-        GameObject effect = Instantiate(buildManager.buildEffect, GetBuildPosition(), Quaternion.identity);
-        Destroy(effect, 3f);
+        turret.Overcharge();
 
         isUpgraded = true;
     }
 
     public void ReclaimTurret()
     {
-        PlayerStats.Money += turretBlueprint.cost;
+        buildManager.inv.AddTurret(turretBlueprint.type, 1);
 
         GameObject effect = Instantiate(buildManager.reclaimEffect, GetBuildPosition(), Quaternion.identity);
         Destroy(effect, 2.5f);
@@ -106,9 +88,7 @@ public class Node : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        if (!buildManager.CanBuild)
-            return;
-        if (buildManager.HasMoney)
+        if (buildManager.HasTurret())
         {
             sprite.color = hoverColor;
         }
@@ -116,7 +96,6 @@ public class Node : MonoBehaviour
         {
             sprite.color = cantBuyColor;
         }
-
     }
 
     void OnMouseExit()

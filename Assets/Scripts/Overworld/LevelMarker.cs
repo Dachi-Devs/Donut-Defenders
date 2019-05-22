@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum Direction
 {
@@ -23,7 +24,6 @@ public class LevelMarker : MonoBehaviour
     [Header("Path Options")]
     public bool isPath;
     public LevelMarker nextMarker;
-    public LockPaths pathLock;
 
     private Dictionary<Direction, LevelMarker> _markerDirections;
 

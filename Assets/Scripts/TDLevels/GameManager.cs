@@ -31,4 +31,9 @@ public class GameManager : MonoBehaviour
 
         gameOverUI.SetActive(true);
     }
+
+    public void WinLevel()
+    {
+
+    }
 }

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-    public TurretBlueprint standardTurret;
-    public TurretBlueprint missileLauncher;
-    public TurretBlueprint laserBeamer;
-
+    public TurretBlueprint ringTosser;
+    public TurretBlueprint coldStone;
+    public TurretBlueprint sodaStreamer;
     BuildManager buildManager;
 
     void Start()
@@ -13,18 +13,18 @@ public class Shop : MonoBehaviour
         buildManager = BuildManager.instance;
     }
 
-    public void SelectStandardTurret()
+    public void SelectRingTosser()
     {
-        buildManager.SelectTurretToBuild(standardTurret);
+        buildManager.SelectTurretToBuild(ringTosser);
     }
 
-    public void SelectMissileLauncher()
+    public void SelectSodaStreamer()
     {
-        buildManager.SelectTurretToBuild(missileLauncher);
+        buildManager.SelectTurretToBuild(sodaStreamer);
     }
 
-    public void SelectLaserBeamer()
+    public void SelectColdStone()
     {
-        buildManager.SelectTurretToBuild(laserBeamer);
+        buildManager.SelectTurretToBuild(coldStone);
     }
 }
