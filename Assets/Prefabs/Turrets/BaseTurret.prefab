@@ -75,16 +75,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42cfb1d92a92f0b4d9e8a50dda7a9617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
-  fireRate: 1
-  bulletPrefab: {fileID: 1569878541648473965, guid: eb3100b293ff84246ae551136aeeeabb,
-    type: 3}
-  damageOverTime: 30
-  slowPct: 0.5
+  sprite: {fileID: 9169001243747818175}
   rotSpeed: 10
   enemyTag: Enemy
   firePoint: {fileID: 3344942332849040143}
-  sprite: {fileID: 9169001243747818175}
+  bulletObj: {fileID: 1569878541648473965, guid: eb3100b293ff84246ae551136aeeeabb,
+    type: 3}
 --- !u!1 &8815681695535678135
 GameObject:
   m_ObjectHideFlags: 0

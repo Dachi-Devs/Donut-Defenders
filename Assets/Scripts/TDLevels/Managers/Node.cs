@@ -75,11 +75,12 @@ public class Node : MonoBehaviour
     public void ReclaimTurret()
     {
         buildManager.inv.AddTurret(turretBlueprint.type, 1);
+        buildManager.shopUI.UpdateText();
 
         GameObject effect = Instantiate(buildManager.reclaimEffect, GetBuildPosition(), Quaternion.identity);
         Destroy(effect, 2.5f);
 
-        Destroy(turret);
+        Destroy(turret.gameObject);
         turretBlueprint = null;
     }
 

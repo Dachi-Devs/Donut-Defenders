@@ -16,6 +16,11 @@ public class Inventory
         turretDict[type] += amount;
     }
 
+    public int GetAmount(string type)
+    {
+        return turretDict[type];
+    }
+
     public bool Build(string type)
     {
         if(HasTurret(type))

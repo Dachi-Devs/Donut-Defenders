@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spr: {fileID: 21300000, guid: 279f7a287d7d99f44b8c936a5f07586c, type: 3}
   type: Soda
-  range: 0
-  fireRate: 0
-  damageOverTime: 0
-  slowPct: 0
-  bulletPrefab: {fileID: 1569878541648473965, guid: eb3100b293ff84246ae551136aeeeabb,
-    type: 3}
-  ocSpr: {fileID: 0}
+  range: 10
+  fireRate: 1
+  damageMod: 5
+  damageOverTimeMod: 10
+  explosionRadiusMod: 5
+  slowPctMod: 10
+  slowDurMod: 1
+  bullet: {fileID: 11400000, guid: e2450d3705220f1448e1db2b6935f4c9, type: 2}
+  ocSpr: {fileID: 21300000, guid: 2999e39d9df0f3a4fa1701abf337ad7c, type: 3}
   overchargeCost: 2

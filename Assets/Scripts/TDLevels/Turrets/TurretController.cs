@@ -5,30 +5,29 @@ public class TurretController : MonoBehaviour
 
     private Transform target;
     private Enemy targetEnemy;
+    [SerializeField]
     private TurretBlueprint turretBP;
+    [SerializeField]
+    private SpriteRenderer sprite;
 
-    [Header("General")]
-
-    public float range;
-
-    [Header("Turret Settings")]
-    public float fireRate;
+    private float range;
+    private float fireRate;
     private float fireCountdown;
-    public GameObject bulletPrefab;
-
-    public int damageOverTime;
-    public float slowPct;
 
     [Header("Editor Setup")]
-    public float rotSpeed = 10f;
+    public float rotSpeed = 12f;
     public string enemyTag = "Enemy";
-
     public Transform firePoint;
-    public SpriteRenderer sprite;
+    [SerializeField]
+    private GameObject bulletObj;
 
     // Start is called before the first frame update
     void Start()
     {
+        if(turretBP != null)
+        {
+            Setup(turretBP);
+        }
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
@@ -90,10 +89,11 @@ public class TurretController : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = Instantiate(bulletObj, firePoint.position, firePoint.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         if (bullet != null)
         {
+            bullet.Setup(turretBP);
             bullet.Seek(target);
         }
     }
@@ -108,6 +108,8 @@ public class TurretController : MonoBehaviour
     {
         turretBP = turr;
         sprite.sprite = turretBP.spr;
+        range = turretBP.range;
+        fireRate = turretBP.fireRate;
     }
 
     public void Overcharge()

@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spr: {fileID: 21300000, guid: 6f18a6d68dff22149b2b515429c354c8, type: 3}
   type: Ring
-  range: 0
-  fireRate: 0
-  damageOverTime: 0
-  slowPct: 0
-  bulletPrefab: {fileID: 1569878541648473965, guid: eb3100b293ff84246ae551136aeeeabb,
-    type: 3}
-  ocSpr: {fileID: 0}
+  range: 12
+  fireRate: 1
+  damageMod: 10
+  damageOverTimeMod: 0
+  explosionRadiusMod: 0
+  slowPctMod: 0
+  slowDurMod: 0
+  bullet: {fileID: 11400000, guid: e2450d3705220f1448e1db2b6935f4c9, type: 2}
+  ocSpr: {fileID: 21300000, guid: d4851b7b919aeff4c9b41317b36d4108, type: 3}
   overchargeCost: 2

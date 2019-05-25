@@ -40,20 +40,20 @@ public class OverworldPlayer : MonoBehaviour
 
     private void CheckForInput()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if ((Input.GetKeyDown(KeyCode.UpArrow)) || (Input.GetKeyDown(KeyCode.W)))
         {
             TrySetDirection(Direction.Up);
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else if ((Input.GetKeyDown(KeyCode.DownArrow)) || (Input.GetKeyDown(KeyCode.S)))
         {
             TrySetDirection(Direction.Down);
         }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if ((Input.GetKeyDown(KeyCode.RightArrow)) || (Input.GetKeyDown(KeyCode.D)))
         {
             TrySetDirection(Direction.Right);
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if ((Input.GetMouseButtonDown(0)) || (Input.GetKeyDown(KeyCode.A)))
         {
             TryLoadLevel();
         }

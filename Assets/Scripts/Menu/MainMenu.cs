@@ -6,13 +6,12 @@ public class MainMenu : MonoBehaviour
     public GameObject mainButtons;
     public GameObject quitButtons;
     public string newgameScene;
-    public string testLevel;
     public ScreenFade fade;
     
 
     public void NewGame()
     {
-        fade.FadeTo(testLevel);
+        fade.FadeTo(newgameScene);
     }
 
     public void CheckQuit()

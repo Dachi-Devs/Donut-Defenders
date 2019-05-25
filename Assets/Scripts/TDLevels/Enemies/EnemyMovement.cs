@@ -20,17 +20,28 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        Vector3 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * enemy.moveSpeed * Time.deltaTime, Space.World);
+        MoveToWaypoint();
         RotateToPath();
-
 
         if (Vector3.Distance(transform.position, target.position) <= 0.2f)
         {
             GetNextWaypoint();
         }
+    }
 
-        enemy.moveSpeed = enemy.startSpeed;
+    void MoveToWaypoint()
+    {
+        Vector3 dir = target.position - transform.position;
+        transform.Translate(dir.normalized * enemy.moveSpeed * Time.deltaTime, Space.World);
+        Debug.Log(enemy.moveSpeed);
+    }
+
+    void RotateToPath()
+    {
+        Vector3 dir = target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir, Vector3.forward);
+        Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, rotSpeed * Time.deltaTime).eulerAngles;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotation.z);
     }
 
     void GetNextWaypoint()
@@ -50,13 +61,5 @@ public class EnemyMovement : MonoBehaviour
         PlayerStats.Lives--;
         WaveSpawner.enemyCount--;
         Destroy(gameObject);
-    }
-
-    void RotateToPath()
-    {
-        Vector3 dir = target.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir, Vector3.forward);
-        Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, rotSpeed * Time.deltaTime).eulerAngles;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotation.z);
     }
 }

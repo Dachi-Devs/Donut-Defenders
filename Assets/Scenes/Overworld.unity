@@ -2037,8 +2037,9 @@ PrefabInstance:
     - target: {fileID: 756721516523490017, guid: ebdfd689bffbc68458a3f5390be0effa,
         type: 3}
       propertyPath: level.levelToLoad
-      value: TestScene
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
+        type: 3}
     - target: {fileID: 756721516523490017, guid: ebdfd689bffbc68458a3f5390be0effa,
         type: 3}
       propertyPath: level.levelTitle
@@ -2063,7 +2064,8 @@ PrefabInstance:
         type: 3}
       propertyPath: level.levelToLoad
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
+        type: 3}
     - target: {fileID: 756721515923923140, guid: ebdfd689bffbc68458a3f5390be0effa,
         type: 3}
       propertyPath: UpMarker
@@ -2082,8 +2084,9 @@ PrefabInstance:
     - target: {fileID: 756721515923923140, guid: ebdfd689bffbc68458a3f5390be0effa,
         type: 3}
       propertyPath: level.levelToLoad
-      value: TestScene
-      objectReference: {fileID: 0}
+      value: 
+      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
+        type: 3}
     - target: {fileID: 756721515923923140, guid: ebdfd689bffbc68458a3f5390be0effa,
         type: 3}
       propertyPath: level.levelTitle
@@ -2094,6 +2097,12 @@ PrefabInstance:
       propertyPath: level.hasLevel
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 756721515819725019, guid: ebdfd689bffbc68458a3f5390be0effa,
+        type: 3}
+      propertyPath: level.levelToLoad
+      value: 
+      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
+        type: 3}
     - target: {fileID: 756721516565942968, guid: ebdfd689bffbc68458a3f5390be0effa,
         type: 3}
       propertyPath: RightMarker
@@ -2139,7 +2148,7 @@ PrefabInstance:
         type: 3}
       propertyPath: level.levelToLoad
       value: 
-      objectReference: {fileID: 102900000, guid: 4c4b4bca96afe024d8c37730dae1f0c9,
+      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
         type: 3}
     - target: {fileID: 756721515863275776, guid: ebdfd689bffbc68458a3f5390be0effa,
         type: 3}
@@ -2170,7 +2179,8 @@ PrefabInstance:
         type: 3}
       propertyPath: level.levelToLoad
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab,
+        type: 3}
     - target: {fileID: 756721515880232862, guid: ebdfd689bffbc68458a3f5390be0effa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2380,6 +2390,11 @@ PrefabInstance:
       propertyPath: ui
       value: 
       objectReference: {fileID: 454971185}
+    - target: {fileID: 2451942873320681203, guid: 3016e12f97600254c9d0da8e62e040f7,
+        type: 3}
+      propertyPath: canMove
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3016e12f97600254c9d0da8e62e040f7, type: 3}
 --- !u!114 &4977752628454591241 stripped

@@ -2,14 +2,30 @@
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    [SerializeField]
+    private Transform target;
 
-    public float speed = 10f;
-    public float explosionRadius = 0f;
-    public int damage = 50;
+    private float speed;
+    private float explosionRadius;
+    private float slowPct;
+    private float slowDur;
+    private int damage;
+
     public float rotSpeed = 10f;
+    [SerializeField]
+    private SpriteRenderer spr;
+    private BulletBlueprint bulletBP;
 
-    public GameObject impactEffect;
+    public void Setup(TurretBlueprint turr)
+    {
+        bulletBP = turr.bullet;
+        speed = bulletBP.speed;
+        explosionRadius = bulletBP.baseExplosionRadius * turr.explosionRadiusMod;
+        damage = bulletBP.baseDamage * turr.damageMod;
+        slowPct = bulletBP.baseSlowPct * turr.slowPctMod;
+        slowDur = bulletBP.baseSlowDur * turr.slowDurMod;
+        spr.sprite = bulletBP.spr;
+    }
 
     public void Seek (Transform _target)
     {
@@ -49,7 +65,7 @@ public class Bullet : MonoBehaviour
 
     void HitTarget()
     {
-        GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
+        GameObject effectIns = (GameObject)Instantiate(bulletBP.impactEffect, transform.position, transform.rotation);
         Destroy(effectIns, 1f);
 
         if (explosionRadius > 0f)
@@ -82,6 +98,7 @@ public class Bullet : MonoBehaviour
         if (e != null)
         {
             e.TakeDamage(damage);
+            e.Slow(slowPct, slowDur);
         }
     }
 

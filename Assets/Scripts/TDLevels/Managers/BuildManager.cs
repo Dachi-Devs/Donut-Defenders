@@ -26,6 +26,7 @@ public class BuildManager : MonoBehaviour
 
     public TurretUI turretUI;
     public BuildUI buildUI;
+    public Shop shopUI;
 
     public void Update()
     {
@@ -87,6 +88,8 @@ public class BuildManager : MonoBehaviour
 
         GameObject effect = Instantiate(buildEffect, node.GetBuildPosition(), Quaternion.identity);
         Destroy(effect, 5f);
+
+        shopUI.UpdateText();
     }
 
     public TurretBlueprint GetTurretToBuild()

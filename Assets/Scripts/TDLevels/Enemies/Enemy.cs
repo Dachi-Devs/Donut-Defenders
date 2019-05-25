@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
     public float startSpeed = 10f;
-    [HideInInspector]
+    [SerializeField]
     public float moveSpeed;
+    private bool isSlowed = false;
+    private float slowCountdown;
+
 
     public float maxHealth = 100f;
     [HideInInspector]
@@ -16,12 +20,20 @@ public class Enemy : MonoBehaviour
 
     public GameObject deathEffect;
 
-
-
     void Start()
     {
         health = maxHealth;
         moveSpeed = startSpeed;
+    }
+
+    void Update()
+    {
+        if(slowCountdown > 0)
+        {
+            slowCountdown -= Time.deltaTime;
+            return;
+        }
+        ResetSpeed();
     }
 
     public void TakeDamage(float dam)
@@ -42,9 +54,18 @@ public class Enemy : MonoBehaviour
         healthBar.fillAmount = healthPercent;
     }
 
-    public void Slow(float slow)
+    public void Slow(float slow, float duration)
     {
-        moveSpeed = startSpeed * (1 - slow);
+        slowCountdown = duration;
+        if (startSpeed * (slow/100) <= moveSpeed)
+        {
+            moveSpeed = startSpeed * (slow/100);
+        }
+    }
+
+    private void  ResetSpeed()
+    {
+        moveSpeed = startSpeed;
     }
 
     void Die()

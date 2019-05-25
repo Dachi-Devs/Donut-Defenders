@@ -45,12 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 50
-  explosionRadius: 0
-  damage: 10
   rotSpeed: 10
-  impactEffect: {fileID: 7291770674028874735, guid: e7a5b7f631003a04ca24f449173a89b8,
-    type: 3}
+  spr: {fileID: 8887984030754054169}
 --- !u!1 &6750317527118426272
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,9 +8,12 @@ public class TurretBlueprint : ScriptableObject
 
     public float range;
     public float fireRate;
-    public int damageOverTime;
-    public float slowPct;
-    public GameObject bulletPrefab;
+    public int damageMod;
+    public int damageOverTimeMod;
+    public float explosionRadiusMod;
+    public float slowPctMod;
+    public float slowDurMod;
+    public BulletBlueprint bullet;
 
     public Sprite ocSpr;
     public int overchargeCost;
