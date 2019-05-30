@@ -3,7 +3,7 @@
 [System.Serializable]
 public class Wave
 {
-    public GameObject enemy;
+    public GameObject[] enemyInfantry;
     public int count;
     public float rate;
 }

@@ -1,25 +1,30 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class WaveSpawner : MonoBehaviour
 {
     public static int enemyCount;
 
-    public Wave[] waves; 
-
+    public Wave[] waves;
     public bool stackWaves = false;
     public Transform spawnPoint;
 
     public float waveTimer = 5f, spawnDelay = 0.5f;
 
-    private float countdown = 2f;
+    public float countdown = 2f;
 
     public Text timerText;
 
     public GameManager gameManager;
 
     private int waveIndex = 0;
+
+    void Start()
+    {
+        enemyCount = 0;
+    }
 
     void Update()
     {
@@ -53,7 +58,8 @@ public class WaveSpawner : MonoBehaviour
 
         for (int i = 0; i < wave.count; i++)
         {
-            SpawnEnemy(wave.enemy);
+            int x = Random.Range(0, wave.enemyInfantry.Length - 1);
+            SpawnEnemy(wave.enemyInfantry[x]);
             yield return new WaitForSeconds(spawnDelay);
         }
         waveIndex++;

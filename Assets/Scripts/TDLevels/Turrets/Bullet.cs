@@ -82,8 +82,8 @@ public class Bullet : MonoBehaviour
 
     void Explode()
     {
-        Collider[] hitObjects = Physics.OverlapSphere(transform.position, explosionRadius);
-        foreach (Collider collider in hitObjects)
+        Collider2D[] hitObjects = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        foreach (Collider2D collider in hitObjects)
         {
             if (collider.tag == "Enemy")
             {
@@ -97,8 +97,7 @@ public class Bullet : MonoBehaviour
         Enemy e = enemy.GetComponent<Enemy>();
         if (e != null)
         {
-            e.TakeDamage(damage);
-            e.Slow(slowPct, slowDur);
+            e.EnemyHit(damage, slowPct, slowDur);
         }
     }
 

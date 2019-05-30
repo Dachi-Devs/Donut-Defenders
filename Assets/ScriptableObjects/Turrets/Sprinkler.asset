@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b503417f1498fe498ba46bae96dc533, type: 3}
+  m_Name: Sprinkler
+  m_EditorClassIdentifier: 
+  spr: {fileID: 21300000, guid: 0eb8b45ab90d09b4989b89c907e3e4cc, type: 3}
+  type: Sprinkler
+  range: 0
+  fireRate: 5
+  damageMod: 1
+  damageOverTimeMod: 5
+  explosionRadiusMod: 1
+  slowPctMod: 50
+  slowDurMod: 5
+  isSpawner: 1
+  objectToSpawn: {fileID: 8841833950861110784, guid: 9555c3d8dfc4f4547a16033e4b222086,
+    type: 3}
+  bullet: {fileID: 0}
+  contact: {fileID: 11400000, guid: a4e7afb2c6567d248a6f11bffaf02cbe, type: 2}
+  ocSpr: {fileID: 0}
+  overchargeCost: 0

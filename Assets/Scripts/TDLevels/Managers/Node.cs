@@ -3,7 +3,7 @@ using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour
 {
-    public Color hoverColor, cantBuyColor;
+    public Color hoverColor;
 
     [HideInInspector]
     public GameObject turretObject;
@@ -82,6 +82,8 @@ public class Node : MonoBehaviour
 
         Destroy(turret.gameObject);
         turretBlueprint = null;
+
+        isUpgraded = false;
     }
 
     void OnMouseEnter()
@@ -89,14 +91,7 @@ public class Node : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        if (buildManager.HasTurret())
-        {
-            sprite.color = hoverColor;
-        }
-        else
-        {
-            sprite.color = cantBuyColor;
-        }
+        sprite.color = hoverColor;
     }
 
     void OnMouseExit()

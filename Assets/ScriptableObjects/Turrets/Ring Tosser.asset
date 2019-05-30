@@ -21,6 +21,8 @@ MonoBehaviour:
   explosionRadiusMod: 0
   slowPctMod: 0
   slowDurMod: 0
+  isSpawner: 0
+  objectToSpawn: {fileID: 0}
   bullet: {fileID: 11400000, guid: e2450d3705220f1448e1db2b6935f4c9, type: 2}
   ocSpr: {fileID: 21300000, guid: d4851b7b919aeff4c9b41317b36d4108, type: 3}
   overchargeCost: 2

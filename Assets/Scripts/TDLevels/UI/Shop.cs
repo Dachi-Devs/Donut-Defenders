@@ -3,12 +3,8 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-    public TurretBlueprint ringTosser;
-    public Text ringCount;
-    public TurretBlueprint coldStone;
-    public Text coldCount;
-    public TurretBlueprint sodaStreamer;
-    public Text sodaCount;
+    public TurretBlueprint[] towerTypes;
+    public Text[] towerCounts;
     BuildManager buildManager;
 
     void Start()
@@ -19,24 +15,29 @@ public class Shop : MonoBehaviour
 
     public void UpdateText()
     {
-        Debug.Log(buildManager.inv.GetAmount(ringTosser.type));
-        ringCount.text = buildManager.inv.GetAmount(ringTosser.type).ToString();
-        coldCount.text = buildManager.inv.GetAmount(coldStone.type).ToString();
-        sodaCount.text = buildManager.inv.GetAmount(sodaStreamer.type).ToString();
+        for(int i = 0; i < towerTypes.Length; i++)
+        {
+            towerCounts[i].text = buildManager.inv.GetAmount(towerTypes[i].type).ToString();
+        }
     }
 
     public void SelectRingTosser()
     {
-        buildManager.SelectTurretToBuild(ringTosser);
+        buildManager.SelectTurretToBuild(towerTypes[0]);
     }
 
     public void SelectSodaStreamer()
     {
-        buildManager.SelectTurretToBuild(sodaStreamer);
+        buildManager.SelectTurretToBuild(towerTypes[1]);
     }
 
     public void SelectColdStone()
     {
-        buildManager.SelectTurretToBuild(coldStone);
+        buildManager.SelectTurretToBuild(towerTypes[2]);
+    }
+
+    public void SelectSprinkler()
+    {
+        buildManager.SelectTurretToBuild(towerTypes[3]);
     }
 }

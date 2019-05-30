@@ -15,12 +15,15 @@ MonoBehaviour:
   spr: {fileID: 21300000, guid: 279f7a287d7d99f44b8c936a5f07586c, type: 3}
   type: Soda
   range: 10
-  fireRate: 1
+  fireRate: 0.1
   damageMod: 5
   damageOverTimeMod: 10
-  explosionRadiusMod: 5
-  slowPctMod: 10
+  explosionRadiusMod: 1
+  slowPctMod: 90
   slowDurMod: 1
+  isSpawner: 0
+  objectToSpawn: {fileID: 0}
   bullet: {fileID: 11400000, guid: e2450d3705220f1448e1db2b6935f4c9, type: 2}
+  contact: {fileID: 0}
   ocSpr: {fileID: 21300000, guid: 2999e39d9df0f3a4fa1701abf337ad7c, type: 3}
   overchargeCost: 2

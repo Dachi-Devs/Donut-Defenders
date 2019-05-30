@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 835418278646646190}
   - component: {fileID: 1473005431}
   - component: {fileID: 8291136555555962057}
-  - component: {fileID: 835418278646646187}
+  - component: {fileID: -5549892715503387812}
   m_Layer: 0
   m_Name: TomatoEnemy
   m_TagString: Enemy
@@ -275,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835418278646646186}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: 2, z: 25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4349292805565168739}
@@ -316,19 +316,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotSpeed: 10
---- !u!135 &835418278646646187
-SphereCollider:
+--- !u!58 &-5549892715503387812
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835418278646646186}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.012604535, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.5819295
 --- !u!1 &1308555900801350779
 GameObject:
   m_ObjectHideFlags: 0

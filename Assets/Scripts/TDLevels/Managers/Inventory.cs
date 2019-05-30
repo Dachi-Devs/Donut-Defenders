@@ -8,7 +8,8 @@ public class Inventory
     {
         {"Ring", 2 },
         {"Soda", 2 },
-        {"Cold", 2 }
+        {"Cold", 2 },
+        {"Sprinkler", 2 }
     };
     
     public void AddTurret(string type, int amount)
@@ -42,7 +43,6 @@ public class Inventory
 
     public void OutputDict()
     {
-        Debug.Log(turretDict.Count);
         foreach (KeyValuePair<string, int> kvp in turretDict)
             Debug.Log("Key = {0} + Value = {1}" + kvp.Key + kvp.Value);
     }

@@ -13,7 +13,10 @@ public class TurretBlueprint : ScriptableObject
     public float explosionRadiusMod;
     public float slowPctMod;
     public float slowDurMod;
+    public bool isSpawner;
+    public GameObject objectToSpawn;
     public BulletBlueprint bullet;
+    public ContactBlueprint contact;
 
     public Sprite ocSpr;
     public int overchargeCost;

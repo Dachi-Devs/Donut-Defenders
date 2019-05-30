@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
     public float startSpeed = 10f;
     [SerializeField]
     public float moveSpeed;
-    private bool isSlowed = false;
     private float slowCountdown;
 
 
@@ -36,7 +35,14 @@ public class Enemy : MonoBehaviour
         ResetSpeed();
     }
 
-    public void TakeDamage(float dam)
+    public void EnemyHit(float dam, float slowP, float slowD)
+    {
+        TakeDamage(dam);
+        if(slowP > 0)
+            Slow(slowP, slowD);
+    }
+
+    private void TakeDamage(float dam)
     {
         health -= dam;
 
@@ -54,12 +60,12 @@ public class Enemy : MonoBehaviour
         healthBar.fillAmount = healthPercent;
     }
 
-    public void Slow(float slow, float duration)
+    private void Slow(float slow, float duration)
     {
         slowCountdown = duration;
         if (startSpeed * (slow/100) <= moveSpeed)
         {
-            moveSpeed = startSpeed * (slow/100);
+            moveSpeed = startSpeed * (1 - (slow/100));
         }
     }
 

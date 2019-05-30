@@ -15,7 +15,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         enemy = GetComponent<Enemy>();
-        target = Waypoints.points[0];
+        target = LevelGeneration.objectLocations[0];
     }
 
     void Update()
@@ -33,27 +33,29 @@ public class EnemyMovement : MonoBehaviour
     {
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * enemy.moveSpeed * Time.deltaTime, Space.World);
-        Debug.Log(enemy.moveSpeed);
     }
 
     void RotateToPath()
     {
         Vector3 dir = target.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir, Vector3.forward);
-        Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, rotSpeed * Time.deltaTime).eulerAngles;
-        transform.rotation = Quaternion.Euler(0f, 0f, rotation.z);
+        if(dir != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(dir, Vector3.forward);
+            Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, rotSpeed * Time.deltaTime).eulerAngles;
+            transform.rotation = Quaternion.Euler(0f, 0f, rotation.z);
+        }
     }
 
     void GetNextWaypoint()
     {
-        if (waypointIndex >= Waypoints.points.Length - 1)
+        if (waypointIndex >= LevelGeneration.objectLocations.Count - 1)
         {
             EndPath();
             return;
         }
 
         waypointIndex++;
-        target = Waypoints.points[waypointIndex];
+        target = LevelGeneration.objectLocations[waypointIndex];
     }
 
     void EndPath()
